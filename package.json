@@ -10,6 +10,7 @@
     "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
+    "dexie": "4.4.6",
     "lucide-vue-next": "1.0.0",
     "pinia": "3.0.4",
     "vue": "3.5.43",
@@ -18,6 +19,7 @@
   "devDependencies": {
     "@tailwindcss/vite": "4.3.3",
     "@vitejs/plugin-vue": "6.0.10",
+    "fake-indexeddb": "6.2.5",
     "tailwindcss": "4.3.3",
     "typescript": "5.9.3",
     "vite": "7.3.7",
