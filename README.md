@@ -1,14 +1,27 @@
 # GrowthFlow
 
-GrowthFlow 项目仓库，当前处于初始化阶段。
+个人成长计划与记录系统。项目正在分阶段开发，目前完成阶段 0 的开发环境与基础页面。
 
-## 获取代码
+## 使用 Docker 开发
+
+需要 Docker 和 Docker Compose，无需在本机安装 Node.js 或 npm 依赖。
 
 ```bash
-git clone git@github.com:EvanYao826/GrowthFlow.git
-cd GrowthFlow
+docker compose up --build -d
 ```
 
-## 项目文档
+打开 <http://localhost:5173/>。源代码修改后，开发页面会自动更新。
 
-项目介绍、环境要求、安装步骤和运行说明将随开发进度补充。
+```bash
+docker compose exec app npm run typecheck
+docker compose exec app npm run build
+docker compose exec app npm run test
+```
+
+停止开发容器：
+
+```bash
+docker compose down
+```
+
+当前只有用于验证环境的基础页面。导航、任务、记录和数据存储会在后续阶段实现。
