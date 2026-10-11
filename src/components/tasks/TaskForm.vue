@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { computed, reactive } from 'vue'
 import BaseButton from '../ui/BaseButton.vue'
 import type { TaskDraft } from '../../types/task'
 
@@ -15,6 +15,8 @@ const emit = defineEmits<{
 }>()
 
 const draft = reactive<TaskDraft>({ ...props.initial })
+const hasChanges = computed(() => JSON.stringify(draft) !== JSON.stringify(props.initial))
+defineExpose({ hasChanges })
 
 function setMinutes(field: 'plannedMinutes' | 'actualMinutes', event: Event) {
   const target = event.target
@@ -28,7 +30,7 @@ function setMinutes(field: 'plannedMinutes' | 'actualMinutes', event: Event) {
   <form class="task-form" @submit.prevent="emit('submit', { ...draft })">
     <div class="task-form-heading">
       <h2>{{ isEditing ? '编辑任务' : '新建任务' }}</h2>
-      <p>日期和名称为必填项。内容仅保存在当前浏览器中。</p>
+      <p>名称和日期为必填项，其余信息可以稍后补充。</p>
     </div>
 
     <div class="task-form-grid">
